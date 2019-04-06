@@ -2,7 +2,12 @@
 
 class Bot:
 
-    def __init__():
+    def __init__(self):
         pass
 
-    def  
+    def jaccard(first_text, second_text):
+
+        power = 0
+        return power
+
+
