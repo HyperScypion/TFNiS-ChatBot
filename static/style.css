@@ -50,8 +50,9 @@ box-shadow: none;
 }
  
 .btn {
+font-family: Sans-serif;
 border: 2px solid transparent;
-background: #e60000;
+background: #E60000;
 color: #F6C4C4;
 font-size: 20px;
 line-height: 15px;
