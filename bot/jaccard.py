@@ -13,7 +13,5 @@ class Jaccard:
                 if first_text[i:i+3] == second_text[j:j+3]:
                     power += 1
 
-        return (power/((int(len(first_text)) - 2) + (int(len(second_text)) - 2) - power))
-
-
-
+        return (power/((int(len(first_text)) - 2) +
+                (int(len(second_text)) - 2) - power))
