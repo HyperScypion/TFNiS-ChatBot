@@ -1,5 +1,3 @@
-
-
 class Jaccard:
 
     def __init__(self):
