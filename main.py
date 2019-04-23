@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
+from sqlalchemy.orm import sessionmaker
+from database.make_database import Users
 import os
 
 app = Flask(__name__)
@@ -18,6 +20,12 @@ def home():
 def do_admin_login():
     if request.form['username'] != '':
         session['logged_in'] = True
+        Session = sessionmaker()
+        Session.configure(bind='sqlite///bot.db')
+        session_db = Session()
+        user = Users(id=1, nick=request.form['username'])
+        session_db.add(user)
+        print(user)
         return 'chat'
     else:
         return home()

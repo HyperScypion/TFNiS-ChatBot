@@ -9,6 +9,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 
 Base = declarative_base()
 
+
 class Users(Base):
     __tablename__ = 'users'
 
