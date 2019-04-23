@@ -20,7 +20,6 @@ def do_admin_login():
         session['logged_in'] = True
         return 'chat'
     else:
-        flash('wrong password!')
         return home()
 
 
