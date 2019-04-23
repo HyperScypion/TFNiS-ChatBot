@@ -9,6 +9,12 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 
 Base = declarative_base()
 
+class Users(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    nick = Column(String(50), nullable=False)
+
 
 class Question(Base):
     __tablename__ = 'question'
@@ -16,6 +22,7 @@ class Question(Base):
     id = Column(Integer, primary_key=True)
     question = Column(String(500), nullable=False)
     verified = Column(String(1), nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'))
     user = Column(String(50), nullable=False)
 
 
