@@ -25,7 +25,6 @@ class Brain:
             self.corpus = [self.dictionary.doc2vow(text) 
                     for text in self.text_to_corp]
             corpora.MmCorpus.serialize('/tmp/deerwester.mm', corpus)
-            self.id2word = corpora.Dictionary.load('/tmp/deerwester.dict')
             return self.corpus
 
     def predict(self, text, jaccard=False):
