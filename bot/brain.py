@@ -1,7 +1,7 @@
 import random
 import numpy as np
 import pandas as pd
-from jaccard import Jaccard
+from .jaccard import Jaccard
 from gensim import corpora, models
 from gensim.models import LdaModel
 from gensim.test.utils import common_texts
