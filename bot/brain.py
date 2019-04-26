@@ -1,9 +1,11 @@
+import nltk
 import random
 import numpy as np
 import pandas as pd
 from .jaccard import Jaccard
 from gensim import corpora, models
 from gensim.models import LdaModel
+from nltk.corpus import stopwords
 from gensim.test.utils import common_texts
 from gensim.corpora.dictionary import Dictionary
 
@@ -12,15 +14,15 @@ class Brain:
     def __init__(self):
         pass
 
-    def load_model(self, path='/home/hyperscypion/Desktop/database_lda.csv'):
+    def load_model(self, path='/home/hyperscypion/Desktop/database_csv_stop.csv'):
         self.data_frame = pd.read_csv(path, header=None)
         return self.data_frame
 
     def create_corpus(self, save=True):
         self.text_to_corp = []
         for i in range(len(self.data_frame)):
-            self.text_to_corp.append(self.data_frame[0][i].split())
-
+            splitted = str(self.data_frame[0][i]).split()
+            self.text_to_corp.append(splitted)
         self.dictionary = corpora.Dictionary(self.text_to_corp)
         if save == True:
             self.dictionary.save('/tmp/deerwester.dict')
@@ -39,7 +41,10 @@ class Brain:
         prediction = -1
         list_of_indexes = []
         list_of_topics = []
-
+        stops = set(nltk.corpus.stopwords.words('polish'))
+        text = [word for word in text.split() if word not in stops]
+        string = ' '
+        text = string.join(text)
         if jaccard == True:
             for i in range(len(self.data_frame)):
                 if jacc._compute_index(text, str(self.data_frame[0][i])) > prediction:
