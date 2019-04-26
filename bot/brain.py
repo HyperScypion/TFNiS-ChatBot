@@ -51,16 +51,28 @@ class Brain:
             max_random_index = random.randint(0, len(list_of_indexes) - 1)
             return self.data_frame[1][list_of_indexes[max_random_index]]
         else:
+            for i in range(len(self.data_frame)):
+                if jacc._compute_index(text, str(self.data_frame[0][i])) > prediction:
+                    prediction = jacc._compute_index(text, str(self.data_frame[0][i]))
+
+            for i in range(len(self.data_frame)):
+                if jacc._compute_index(text, str(self.data_frame[0][i])) == prediction:
+                    list_of_indexes.append(i)
             bow = dictionary.doc2bow(text.split())
             for index, score in sorted(self.lda[bow], key=lambda tup: -1 * tup[1]):
                 break
-            for i in range(len(self.data_frame)):
+            for i in list_of_indexes:
                 if index == self.data_frame[2][i]:
-                    list_of_topics.append(self.data_frame[0][i])
+                    list_of_topics.append(self.data_frame[1][i])
 
-            for i in list_of_topics:
-                if jacc._compute_index(text, i) > prediction:
-                    prediction = jacc._compute_index(text, i)
-
-            max_random_ans = random.randint(0, len(list_of_topics) - 1)
-            return list_of_topics[max_random_ans]
+            if len(list_of_topics) > 0:
+                max_random_index = random.randint(0, len(list_of_topics) - 1)
+                return list_of_topics[max_random_index]
+            else:
+                max_temp_jacc = -1
+                max_temp_ind = ''
+                for i in list_of_indexes:
+                    if jacc._compute_index(text, self.data_frame[0][i]) > max_temp_jacc:
+                        max_temp_jacc = jacc._compute_index(text, self.data_frame[0][i])
+                        max_temp_ind = self.data_frame[1][i]
+                return max_temp_ind
