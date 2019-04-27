@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<title>ChatBot</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../static/style.css">
+		
+	</head>
+
+	<body>
+		
+		<div class="head">
+			<div class="head-cont"><a href="./"></a><a href="./" class="head-text">ChatBot</a></div>
+			<div class="head-nick hid" id="head-logout"><span id="head-nick"></span> <a href="./" class="logout">Wyloguj</a></div>
+		</div>
+	
+		<style>
+
+			.container {
+				  border: 2px solid #dedede;
+				  background-color: #f1f1f1;
+				  border-radius: 5px;
+				  padding: 10px;
+				  margin: 10px 0;
+				  width: 20%;
+				  height: 50px;
+				  display: block;
+				  margin-left: auto;
+				  margin-right: auto;
+				}
+
+			.darker {
+			  border-color: #ccc;
+			  background-color: #ddd;
+			  width: 20%;
+			  height: 50px;
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			}
+
+			.container::after {
+			  content: "";
+			  clear: both;
+			  display: table;
+			}
+
+
+		</style>
+
+
+		<div class="container">
+			<p>TFNiS: {{textbox}}</p>
+		</div>
+
+		<div class="container darker">
+			<p>ChatBot: {{bot_response}}</p>
+		</div>
+					
+		<style> 
+			  textarea {
+			  width: 20%;
+			  height: 50px;
+			  padding: 12px 20px;
+			  box-sizing: border-box;
+			  border: 2px solid #ccc;
+			  border-radius: 4px;
+			  background-color: #f8f8f8;
+			  font-size: 16px;
+			  resize: none;
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  }
+		</style>
+		<style>
+			.buttonHolder {display:block; margin-left:48%; margin-right:auto;}
+		</style>
+
+		<form method="POST"> 
+  			<textarea name="textbox"></textarea>
+			<div class="buttonHolder">
+  				<button name="submit">Wyślij</button>
+			</div>
+		</form>
+	</body>
+</html>
