@@ -27,5 +27,5 @@ $ python3 topic.py
 $ python3 main.py
 ```
 
-# 6. Notes:
+# 6. Notes and updates:
 - Deleted .main.py.swp
