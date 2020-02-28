@@ -29,3 +29,6 @@ $ python3 main.py
 
 # 6. Notes and updates:
 - Deleted .main.py.swp
+- Deleted unused files
+- Added .gitignore
+- Minor code cleaning
