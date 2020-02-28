@@ -14,7 +14,7 @@ class Brain:
     def __init__(self):
         pass
 
-    def load_model(self, path='/home/hyperscypion/Desktop/database_csv_stop.csv'):
+    def load_model(self, path='/home/hyperscypion/TFNiS-ChatBot/database_csv_stop.csv'):
         self.data_frame = pd.read_csv(path, header=None)
         return self.data_frame
 
@@ -24,7 +24,7 @@ class Brain:
             splitted = str(self.data_frame[0][i]).split()
             self.text_to_corp.append(splitted)
         self.dictionary = corpora.Dictionary(self.text_to_corp)
-        if save == True:
+        if save is True:
             self.dictionary.save('/tmp/deerwester.dict')
         self.corpus = [self.dictionary.doc2bow(text)
                        for text in self.text_to_corp]
@@ -45,7 +45,7 @@ class Brain:
         text = [word for word in text.split() if word not in stops]
         string = ' '
         text = string.join(text)
-        if jaccard == True:
+        if jaccard is True:
             for i in range(len(self.data_frame)):
                 if jacc._compute_index(text, str(self.data_frame[0][i])) > prediction:
                     prediction = jacc._compute_index(text, str(self.data_frame[0][i]))

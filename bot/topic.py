@@ -4,21 +4,17 @@ import pandas as pd
 from nltk.corpus import stopwords
 from spacy.lang.pl import Polish
 from spacy.lang.pl.examples import sentences
+from nltk.corpus import wordnet as wn
+from nltk.stem.wordnet import WordNetLemmatizer
+
 
 parser = Polish()
-
-words = nltk.word_tokenize('ala ma samochody')
-
 stops = set(nltk.corpus.stopwords.words('polish'))
-
 words = [word for word in words if word not in stops]
 
 print(words)
 
 s = nltk.stem.WordNetLemmatizer()
-
-for word in ['samochód', 'samochody', 'samochodowy']:
-    print(s.lemmatize(word))
 
 
 class Topic:
@@ -47,11 +43,9 @@ class Topic:
         self.ques = []
         self.answ = []
         self.ver = []
+	#TODO
         # Napisać funkcję do wczytywania pytań, odpowiedzi i weryfikacji do 3 osobnych kolumn
         # for i in self.data:
-
-
-from nltk.corpus import wordnet as wn
 
 
 def get_lemma(word):
@@ -60,9 +54,6 @@ def get_lemma(word):
         return word
     else:
         return lemma
-
-
-from nltk.stem.wordnet import WordNetLemmatizer
 
 
 def get_lemma2(word):
@@ -75,8 +66,6 @@ def pre_lda(text):
     tokens = [token for token in tokens if token not in stops]
     return tokens
 
-
-print(pre_lda('Ala ma kota i ma czerwony samochód'))
 
 topic = Topic()
 
