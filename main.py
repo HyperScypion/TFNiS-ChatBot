@@ -1,9 +1,6 @@
 from flask import Flask
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
-from sqlalchemy import create_engine, select
-from sqlalchemy.sql import text
-from database.make_database import Users
 import os
 
 app = Flask(__name__)
