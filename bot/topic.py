@@ -12,7 +12,6 @@ parser = Polish()
 stops = set(nltk.corpus.stopwords.words('polish'))
 words = [word for word in words if word not in stops]
 
-print(words)
 
 s = nltk.stem.WordNetLemmatizer()
 
@@ -43,10 +42,6 @@ class Topic:
         self.ques = []
         self.answ = []
         self.ver = []
-	#TODO
-        # Napisać funkcję do wczytywania pytań, odpowiedzi i weryfikacji do 3 osobnych kolumn
-        # for i in self.data:
-
 
 def get_lemma(word):
     lemma = wn.morphy(word)
